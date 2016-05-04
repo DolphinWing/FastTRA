@@ -1,0 +1,51 @@
+<html>
+<head><title>background</title></head>
+<script type="text/javascript">
+
+//Chrome Extension: onclick extension icon, open popup.html in new tab
+//http://stackoverflow.com/questions/2412258/chrome-extension-onclick-extension-icon-open-popup-html-in-new-tab
+	var user_id = localStorage["user_id"];
+	if (!user_id) {
+		chrome.tabs.create({'url': chrome.extension.getURL('options.html')}, function(tab) {
+		  // Tab opened.
+		});
+	}
+
+// Listen requests from the content script. 
+chrome.extension.onRequest.addListener( 
+  function(request, sender, sendResponse) { 
+    if (request.method == "user_id" && sender.tab) { 
+      sendResponse({data: localStorage['user_id']}); 
+    } 
+	else if (request.method == "station_home" && sender.tab) { 
+      sendResponse({data: localStorage['station_home']}); 
+    } 
+	else if (request.method == "station_away" && sender.tab) { 
+      sendResponse({data: localStorage['station_away']}); 
+    } 
+	else if (request.method == "person_num" && sender.tab) {//[1.2.0.0]dolphin++
+      sendResponse({data: localStorage['person_num']}); 
+    } 
+	else if (request.method == "start_time" && sender.tab) {//[1.2.0.0]dolphin++
+      sendResponse({data: localStorage['start_time']}); 
+    } 
+	else if (request.method == "end_time" && sender.tab) {//[1.2.0.0]dolphin++
+      sendResponse({data: localStorage['end_time']}); 
+    } 
+	else if (request.method == "go_train_no" && sender.tab) {//[1.2.0.3]dolphin++
+      sendResponse({data: localStorage['go_train_no']}); 
+    } 
+	else if (request.method == "back_train_no" && sender.tab) {//[1.2.0.3]dolphin++
+      sendResponse({data: localStorage['back_train_no']}); 
+    } 
+    else { 
+      sendResponse({}); // snub them. 
+    } 
+  } 
+); 
+
+</script>
+
+<body>
+</body>
+</html>

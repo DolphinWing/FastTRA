@@ -1,0 +1,33 @@
+{
+  "name": "台鐵訂票小幫手",
+  
+  "version": "1.3.11",
+  
+  "description": "TRAs Helper by dolphin",
+  
+  "icons": {
+    "48": "a03.png",
+	"128": "hand1.png"
+  },
+  
+  "permissions": [
+		"storage",
+		"http://railway.hinet.net/*", 
+		"http://210.71.181.60/c*" 
+	],
+	  
+  "content_scripts": [
+    {
+      "matches": ["http://railway.hinet.net/ct*",
+			"http://railway.hinet.net/cf*",
+			"http://railway.hinet.net/coq*",
+			"http://210.71.181.60/c*",
+			"http://railway.hinet.net/cc*"] ,
+      "js": ["fast_tra_script.user.js"] ,
+	  "all_frames": true
+    }
+  ],
+  
+  "manifest_version": 2,
+  "options_page": "options.html"
+}
