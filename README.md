@@ -1,4 +1,4 @@
-台鐵訂票小幫手
+台鐵訂票小幫手 (已廢棄/deprecated)
 
 TRAs Helper by dolphin
 
